@@ -1,0 +1,41 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+{# total items count #}
+
+
+{# table body #}
+{% for article in pagination %}
+ <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="upload/{{article.imagename}}" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">{{ article.price }}</h4>
+                                <h4><a href="#">{{ article.name }}</a>
+                                </h4>
+                                <p>{{ article.description }}</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">{{ article.id }}</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+{% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+
+{% endblock %}

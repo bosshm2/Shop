@@ -1,0 +1,13 @@
+shop_sklep_homepage:
+    path:     /
+    defaults: { _controller: ShopSklepBundle:Default:index }
+
+shop_sklep_ask:
+    pattern:     /ask
+    defaults: { _controller: ShopSklepBundle:Page:ask }
+    requirements:
+    methods:  GET|POST
+
+shop_sklep_items:
+    path:     /items
+    defaults: { _controller: ShopSklepBundle:Items:items }
