@@ -1,6 +1,4 @@
 
-{% extends 'base.html.twig' %}
-
 {% block body %}
 
 
@@ -14,19 +12,15 @@
                         <div class="thumbnail">
                             <img src="upload/{{article.imagename}}" alt="">
                             <div class="caption">
-                                <h4 class="pull-right">{{ article.price }}</h4>
-                                <h4><a href="#">{{ article.name }}</a>
+                                <h4 class="pull-right">{{ article.price }} PLN</h4>
+                                <h4><a href="{{path('shop_sklep_item', {'id': article.id}) }}">{{ article.name }}</a>
                                 </h4>
                                 <p>{{ article.description }}</p>
                             </div>
                             <div class="ratings">
                                 <p class="pull-right">{{ article.id }}</p>
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <a href="{{path('shop_sklep_item', {'id': article.id}) }}"><button type="submit" class="btn btn-primary">Zobacz</button></a>
                                 </p>
                             </div>
                         </div>

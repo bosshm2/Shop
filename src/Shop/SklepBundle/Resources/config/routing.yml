@@ -11,3 +11,7 @@ shop_sklep_ask:
 shop_sklep_items:
     path:     /items
     defaults: { _controller: ShopSklepBundle:Items:items }
+
+shop_sklep_item:
+    path:     /item/{id}
+    defaults: { _controller: ShopSklepBundle:Items:item }

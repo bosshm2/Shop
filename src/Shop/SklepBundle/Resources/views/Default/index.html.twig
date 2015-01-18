@@ -1,98 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>{% block title %}Strona główna{% endblock %}</title>
- {% block stylesheets %}
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="css/blog-home.css" rel="stylesheet">
-{% endblock %}
-
-</head>
-
-<body>
-
-  <div class="jumbotron">
-  <h1>Hello, world!</h1>
-
-</div>
-
-    <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-
-            <!-- Blog Entries Column -->
-            <div class="col-md-8">
-
-            {% block body %}
-            {{ render(url('shop_sklep_items')) }}
-            {% endblock %}
-                
-                <hr>
-
-                <!-- Pager -->
-          <!--      <ul class="pager">
-                    <li class="previous">
-                        <a href="#">&larr; Older</a>
-                    </li>
-                    <li class="next">
-                        <a href="#">Newer &rarr;</a>
-                    </li>
-                </ul> -->
-
-            </div>
-      
-            <div class="col-md-4">
-
-                <!-- Blog Search Well -->
-                <div class="well">
-                    <h4></h4>
-
-                     {{ render(url('shop_sklep_ask')) }}
-
-                     </div>
+{% extends 'base.html.twig' %}
 
 
 
-            </div>
 
-        </div>
-        <!-- /.row -->
 
-        <hr>
 
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>sklep 2015</p>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-        </footer>
-
-    </div>
-    <!-- /.container -->
-
-  {% block javascripts %}
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    {% block body %}
+    {{ render(url('shop_sklep_items')) }}
     {% endblock %}
 
-</body>
 
-</html>
+
+

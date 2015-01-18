@@ -1,0 +1,15 @@
+
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+{% for item in result %}
+{{ item.id }} : {{ item.name}}
+
+{{ item.price}} {{ item.description}} {{ item.imagename}} 
+{% endfor %}
+
+{% endblock %}
+

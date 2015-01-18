@@ -21,7 +21,7 @@ class ProductType extends AbstractType
             ->add('name')
             ->add('price')
             ->add('description')
-            ->add('imageName')
+            ->add('imageName', 'file')
             ->add('updatedAt')
 
         ;
