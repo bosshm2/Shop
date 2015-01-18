@@ -1,13 +1,9 @@
-
-
-
-
-
-
-
-
-
 {% block body %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+ <h1>beng</h1>
+
+{% endfor %}
 
 <a href="#" class="btn btn-lg btn-success"
    data-toggle="modal"
@@ -19,7 +15,7 @@
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <h4 class="modal-title" id="myModalLabel">Zapytaj o produkt</h4>
             </div>
             <div class="modal-body">
                 <form action="{{ path('shop_sklep_ask') }}" method="post" {{ form_enctype(form) }}>

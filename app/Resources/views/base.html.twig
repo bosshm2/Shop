@@ -10,24 +10,15 @@
     <meta name="author" content="">
 
     <title>{% block title %}Strona główna{% endblock %}</title>
- {% block stylesheets %}
+
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/blog-home.css" rel="stylesheet">
-{% endblock %}
 
 </head>
 
 <body>
-         {% block jumbotron %}
- 
-
-
-
-
-            {% endblock %}
-
     <!-- Page Content -->
     <div class="container">
 
@@ -42,15 +33,7 @@
                 
                 <hr>
 
-                <!-- Pager -->
-          <!--      <ul class="pager">
-                    <li class="previous">
-                        <a href="#">&larr; Older</a>
-                    </li>
-                    <li class="next">
-                        <a href="#">Newer &rarr;</a>
-                    </li>
-                </ul> -->
+                </ul> 
 
             </div>
       
@@ -81,7 +64,11 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>sklep 2015</p>
+                        {% block footer %}
+
+  footer
+
+    {% endblock footer %}
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -91,13 +78,13 @@
     </div>
     <!-- /.container -->
 
-  {% block javascripts %}
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    {% endblock %}
+
 
 </body>
 

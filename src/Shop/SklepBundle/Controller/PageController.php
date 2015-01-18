@@ -12,25 +12,36 @@ class PageController extends Controller
     public function askAction()
     {
 
-
-    	// create a task and give it some dummy data for this example
         $ask = new Ask();
 
 
         $form = $this->createFormBuilder($ask)
             ->add('name', 'text')
             ->add('email', 'email')
-             ->add('content', 'text')
-
+            ->add('content', 'text')
             ->getForm();
 
-        return $this->render('ShopSklepBundle:Page:ask.html.twig', array(
-            'form' => $form->createView(),
-        ));
+
+        if ($form->isValid()) 
+        {
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Contact enquiry from symblog')
+            ->setFrom('enquiries@symblog.co.uk')
+            ->setTo('email@email.com')
+            ->setBody($this->renderView('ShopSklepBundle:Page:contactEmail.txt.twig', array('ask' => $ask)));
+        $this->get('mailer')->send($message);
+
+        $this->get('session')->setFlash('blogger-notice', 'Your contact enquiry was successfully sent. Thank you!');
+
+  
+        }
     
 
  
-
+              return $this->render('ShopSklepBundle:Page:ask.html.twig', array(
+            'form' => $form->createView(),
+        ));
 
     }
 }
