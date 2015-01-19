@@ -1,16 +1,36 @@
 
 {% extends 'base.html.twig' %}
+
+
+
 {% block body %}
 
-
-
-
-
 {% for item in result %}
-{{ item.id }} : {{ item.name}}
 
-{{ item.price}} {{ item.description}} <img src="{{ item.imagename }}" > 
+<div class="thumbnail">
+<img class="img-responsive" src="{{ item.imagename }}" alt="">
+<div class="caption-full">
+<h4 class="pull-right">{{ item.price}}</h4>
+<h4><a href="#">{{ item.name}}</a>
+</h4>
+{{ item.description}}
+</div>
+
+</div>
+
+
+
+
+
+
 {% endfor %}
 
+{% endblock %}
+
+{% block jumbo %}
+
+{% for item in result %}
+<h1>{{ item.name}}</h1>
+{% endfor %}
 {% endblock %}
 

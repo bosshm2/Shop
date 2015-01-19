@@ -3,4 +3,4 @@ A contact enquiry was made by {{ ask.name }} at {{ "now" | date("Y-m-d H:i") }}.
 Reply-To: {{ ask.email }}
 Subject: {{ ask.subject }}
 Body:
-{{ ask.body }}
+{{ ask.content }}
