@@ -37,10 +37,23 @@
 
           <form class="navbar-form navbar-right">
 
+                      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
 
-        {% block login %}
-{% render controller("FOSUserBundle:Security:login") %}
-          {% endblock %}
+
+            <a href="{{ path('fos_user_security_login') }}" button type="submit" class="btn btn-success">Zaloguj</button></a>
+            <a href="{{ path('fos_user_registration_register') }}" button type="submit" class="btn btn-danger">Zarejestruj</button>
+            </a>
+
+
+            {% endif %}
+
+
+        
         </div><!--/.navbar-collapse -->
       </div>
     </nav>

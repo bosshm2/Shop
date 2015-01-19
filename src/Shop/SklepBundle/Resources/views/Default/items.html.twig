@@ -28,6 +28,10 @@
                     </div>
 {% endfor %}
 </table>
+{% set direction = pagination.getDirection() %}
+<th{% if pagination.isSorted('p.id') %} class="sorted {{ direction }}"{% endif %}>
+    {{ knp_pagination_sortable(pagination, 'Id', 'p.id') }}
+</th>
 {# display navigation #}
 <div class="navigation">
     {{ knp_pagination_render(pagination) }}

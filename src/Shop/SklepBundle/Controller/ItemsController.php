@@ -31,14 +31,15 @@ class ItemsController extends Controller
 	public function itemAction($id)
 	{
 
+
    $itemRepository = $this->getDoctrine()->getRepository('ShopSklepBundle:Product');
    $dataObject = $itemRepository->findById($id);
 
-   		return $this->render('ShopSklepBundle:Default:item.html.twig', array('result' => $dataObject));
+   		return $this->render('ShopSklepBundle:Default:item.html.twig', array('result' => $dataObject));     
 
 
 
-      
+
 
 
     }

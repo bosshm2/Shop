@@ -108,6 +108,8 @@ class ProductController extends Controller
      */
     public function showAction($id)
     {
+
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('ShopSklepBundle:Product')->find($id);
@@ -123,6 +125,7 @@ class ProductController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+
 
     /**
      * Displays a form to edit an existing Product entity.
