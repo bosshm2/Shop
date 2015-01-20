@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Shop\SklepBundle\Entity\Product;
 use Shop\SklepBundle\Form\ProductType;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Product controller.
@@ -45,6 +46,8 @@ class ProductController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Product();
+        $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
+        $path = $helper->asset($entity, 'imageFile');
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 

@@ -7,11 +7,11 @@
 {# total items count #}
 
 
-{# table body #}
+
 {% for article in pagination %}
  <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="upload/{{article.imagename}}" alt="">
+                            <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">{{ article.price }} PLN</h4>
                                 <h4><a href="{{path('shop_sklep_item', {'id': article.id}) }}">{{ article.name }}</a>
@@ -27,14 +27,14 @@
                         </div>
                     </div>
 {% endfor %}
-</table>
+
 {% set direction = pagination.getDirection() %}
-<th{% if pagination.isSorted('p.id') %} class="sorted {{ direction }}"{% endif %}>
+{% if pagination.isSorted('p.id') %} class="sorted {{ direction }}"{% endif %}
     {{ knp_pagination_sortable(pagination, 'Id', 'p.id') }}
-</th>
+
 {# display navigation #}
-<div class="navigation">
+
     {{ knp_pagination_render(pagination) }}
-</div>
+
 
 {% endblock %}

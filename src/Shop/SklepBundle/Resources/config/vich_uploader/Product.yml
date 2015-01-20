@@ -1,4 +1,4 @@
 Shop\SklepBundle\Entity\Product:
     image:
         mapping:           product_image
-        filename_property: image_name
+        filename_property: image

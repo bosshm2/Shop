@@ -14,7 +14,7 @@
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/blog-home.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/shop-homepage.css') }}" rel="stylesheet">
 
 </head>
 
@@ -74,10 +74,34 @@
 
             <!-- Blog Entries Column -->
             <div class="col-md-8">
+{% block body %}
+         {# table body #}
+{% for article in pagination %}
+ <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">{{ article.price }} PLN</h4>
+                                <h4><a href="{{path('shop_sklep_item', {'id': article.id}) }}">{{ article.name }}</a>
+                                </h4>
+                                <p>{{ article.description }}</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">{{ article.id }}</p>
+                                <p>
+                                    <a href="{{path('shop_sklep_item', {'id': article.id}) }}"><button type="submit" class="btn btn-primary">Zobacz</button></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+{% endfor %}
+</table>
+{% set direction = pagination.getDirection() %}
+<th{% if pagination.isSorted('p.id') %} class="sorted {{ direction }}"{% endif %}>
+    {{ knp_pagination_sortable(pagination, 'Id', 'p.id') }}
+</th>
 
-            {% block body %}
- 
-            {% endblock %}
+{% endblock %}
                 
                 <hr>
 
@@ -93,6 +117,8 @@
 
            
     {% block sidebar %}
+
+
 
     {{ render(url('shop_sklep_ask')) }}
 

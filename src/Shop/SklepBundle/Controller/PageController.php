@@ -5,6 +5,7 @@ namespace Shop\SklepBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Shop\SklepBundle\Entity\Ask;
+use Shop\SklepBundle\Entity\Item;
 use Shop\SklepBundle\Form\AskType;
 
 class PageController extends Controller
@@ -44,6 +45,39 @@ class PageController extends Controller
         ));
 
     }
+
+
+
+    public function addAction()
+    {
+
+                // create a task and give it some dummy data for this example
+        $add = new Item();
+     
+
+        $form = $this->createFormBuilder($add)
+            ->add('name')
+            ->add('price', 'money')
+            ->add('description')
+            ->add('imageName', 'file') 
+            ->add('save', 'submit')
+            ->getForm();
+
+
+    
+
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($add);
+    $em->flush();
+
+
+        return $this->render('ShopSklepBundle:Page:add.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+
+    
 }
 
 
