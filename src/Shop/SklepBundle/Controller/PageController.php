@@ -26,14 +26,13 @@ class PageController extends Controller
         if ($form->isValid()) 
         {
 
-        $message = \Swift_Message::newInstance()
+        $mailer = $this->get('mailer');
+        $message = $mailer->createMessage()
             ->setSubject('Pytanie o produkt')
-            ->setFrom('shop@sklep')
+            ->setFrom('shop@sklep.pl')
             ->setTo('email@email.com')
             ->setBody($this->renderView('ShopSklepBundle:Page:contactEmail.txt.twig', array('ask' => $ask)));
         $this->get('mailer')->send($message);
-
-        $this->get('session')->setFlash('blogger-notice', 'Your contact enquiry was successfully sent. Thank you!');
 
   
         }
