@@ -27,8 +27,8 @@ class PageController extends Controller
         {
 
         $message = \Swift_Message::newInstance()
-            ->setSubject('Contact enquiry from symblog')
-            ->setFrom('enquiries@symblog.co.uk')
+            ->setSubject('Pytanie o produkt')
+            ->setFrom('shop@sklep')
             ->setTo('email@email.com')
             ->setBody($this->renderView('ShopSklepBundle:Page:contactEmail.txt.twig', array('ask' => $ask)));
         $this->get('mailer')->send($message);
@@ -47,33 +47,10 @@ class PageController extends Controller
     }
 
 
-
-    public function addAction()
-    {
-
-                // create a task and give it some dummy data for this example
-        $add = new Item();
-     
-
-        $form = $this->createFormBuilder($add)
-            ->add('name')
-            ->add('price', 'money')
-            ->add('description')
-            ->add('imageName', 'file') 
-            ->add('save', 'submit')
-            ->getForm();
+    public function loginAction()   {
 
 
-    
-
-    $em = $this->getDoctrine()->getManager();
-    $em->persist($add);
-    $em->flush();
-
-
-        return $this->render('ShopSklepBundle:Page:add.html.twig', array(
-            'form' => $form->createView(),
-        ));
+        return $this->render('ShopSklepBundle:Page:slogin.html.twig');
     }
 
 

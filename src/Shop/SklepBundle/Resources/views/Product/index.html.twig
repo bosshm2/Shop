@@ -1,9 +1,13 @@
-
+{% extends '::base.html.twig' %}
 
 {% block body -%}
+
+            <a href="{{ path('product_new') }}">
+                <button type="button" class="btn btn-lg btn-success">Add new</button>
+            </a>
     <h1>Product list</h1>
 
-    <table class="records_list">
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -22,16 +26,20 @@
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.price }}</td>
                 <td>{{ entity.description }}</td>
-                <td>{{ entity.imageName }}</td>
+                <td>{{ entity.imageName }}<img data-holder-rendered="true" src="{{ vich_uploader_asset(entity, 'imageFile') }}" style="width: 200px; height: 200px;" data-src="holder.js/200x200" class="img-thumbnail" alt="200x200"></td>
                 <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                 <ul>
-                    <li>
-                        <a href="{{ path('product_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('product_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
+                    
+
+
+
+
+
+                        <a href="{{ path('product_show', { 'id': entity.id }) }}"><button type="button" class="btn btn-xs btn-primary">Show</button></a>
+                   
+                        <a href="{{ path('product_edit', { 'id': entity.id }) }}"><button type="button" class="btn btn-xs btn-primary">Edit</button></a>
+  
                 </ul>
                 </td>
             </tr>
@@ -41,9 +49,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('product_new') }}">
-                Create a new entry
-            </a>
+
         </li>
     </ul>
     {% endblock %}

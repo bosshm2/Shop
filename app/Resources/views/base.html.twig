@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,16 +33,32 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="{{ path('shop_sklep_homepage') }}">Mój sklep</a>
+
+
+
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+
+
+      <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ path('product') }}">Administration</a></li>
+
+              </ul>
+            </li>
+          </ul>
 
           <form class="navbar-form navbar-right">
 
                       {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
+
+                      <button type="button" class="btn btn-success">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>   {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} 
+</button>
+                 <a href="{{ path('fos_user_security_logout') }}" button type="submit" class="btn btn-danger">       {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</button></a>
+       
             {% else %}
 
 
@@ -75,35 +92,11 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 {% block body %}
-         {# table body #}
-{% for article in pagination %}
- <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">{{ article.price }} PLN</h4>
-                                <h4><a href="{{path('shop_sklep_item', {'id': article.id}) }}">{{ article.name }}</a>
-                                </h4>
-                                <p>{{ article.description }}</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">{{ article.id }}</p>
-                                <p>
-                                    <a href="{{path('shop_sklep_item', {'id': article.id}) }}"><button type="submit" class="btn btn-primary">Zobacz</button></a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-{% endfor %}
-</table>
-{% set direction = pagination.getDirection() %}
-<th{% if pagination.isSorted('p.id') %} class="sorted {{ direction }}"{% endif %}>
-    {{ knp_pagination_sortable(pagination, 'Id', 'p.id') }}
-</th>
+
 
 {% endblock %}
                 
-                <hr>
+        
 
                 </ul> 
 
@@ -125,7 +118,7 @@
     {% endblock %}
                      </div>
 
-
+</div>
 
             </div>
 
@@ -137,12 +130,8 @@
         <!-- Footer -->
         <footer>
             <div class="row">
-                <div class="col-lg-12">
-                        {% block footer %}
-
-  footer
-
-    {% endblock footer %}
+                <div class="col-lg-12"> 
+                Sklep 2015
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

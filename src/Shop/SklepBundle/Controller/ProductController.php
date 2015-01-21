@@ -4,17 +4,13 @@ namespace Shop\SklepBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use Shop\SklepBundle\Entity\Product;
 use Shop\SklepBundle\Form\ProductType;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Product controller.
  *
- * @Route("/product")
  */
 class ProductController extends Controller
 {
@@ -22,9 +18,6 @@ class ProductController extends Controller
     /**
      * Lists all Product entities.
      *
-     * @Route("/", name="product")
-     * @Method("GET")
-     * @Template()
      */
     public function indexAction()
     {
@@ -32,22 +25,17 @@ class ProductController extends Controller
 
         $entities = $em->getRepository('ShopSklepBundle:Product')->findAll();
 
-        return array(
+        return $this->render('ShopSklepBundle:Product:index.html.twig', array(
             'entities' => $entities,
-        );
+        ));
     }
     /**
      * Creates a new Product entity.
      *
-     * @Route("/", name="product_create")
-     * @Method("POST")
-     * @Template("ShopSklepBundle:Product:new.html.twig")
      */
     public function createAction(Request $request)
     {
         $entity = new Product();
-        $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
-        $path = $helper->asset($entity, 'imageFile');
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -59,10 +47,10 @@ class ProductController extends Controller
             return $this->redirect($this->generateUrl('product_show', array('id' => $entity->getId())));
         }
 
-        return array(
+        return $this->render('ShopSklepBundle:Product:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
+        ));
     }
 
     /**
@@ -87,27 +75,21 @@ class ProductController extends Controller
     /**
      * Displays a form to create a new Product entity.
      *
-     * @Route("/new", name="product_new")
-     * @Method("GET")
-     * @Template()
      */
     public function newAction()
     {
         $entity = new Product();
         $form   = $this->createCreateForm($entity);
 
-        return array(
+        return $this->render('ShopSklepBundle:Product:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
+        ));
     }
 
     /**
      * Finds and displays a Product entity.
      *
-     * @Route("/{id}", name="product_show")
-     * @Method("GET")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -123,19 +105,16 @@ class ProductController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('ShopSklepBundle:Product:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
 
     /**
      * Displays a form to edit an existing Product entity.
      *
-     * @Route("/{id}/edit", name="product_edit")
-     * @Method("GET")
-     * @Template()
      */
     public function editAction($id)
     {
@@ -150,11 +129,11 @@ class ProductController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('ShopSklepBundle:Product:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
@@ -178,9 +157,6 @@ class ProductController extends Controller
     /**
      * Edits an existing Product entity.
      *
-     * @Route("/{id}", name="product_update")
-     * @Method("PUT")
-     * @Template("ShopSklepBundle:Product:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -202,17 +178,15 @@ class ProductController extends Controller
             return $this->redirect($this->generateUrl('product_edit', array('id' => $id)));
         }
 
-        return array(
+        return $this->render('ShopSklepBundle:Product:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
     /**
      * Deletes a Product entity.
      *
-     * @Route("/{id}", name="product_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {

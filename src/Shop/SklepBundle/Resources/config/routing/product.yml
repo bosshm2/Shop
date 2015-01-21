@@ -1,0 +1,30 @@
+product:
+    path:     /
+    defaults: { _controller: "ShopSklepBundle:Product:index" }
+
+product_show:
+    path:     /{id}/show
+    defaults: { _controller: "ShopSklepBundle:Product:show" }
+
+product_new:
+    path:     /new
+    defaults: { _controller: "ShopSklepBundle:Product:new" }
+
+product_create:
+    path:     /create
+    defaults: { _controller: "ShopSklepBundle:Product:create" }
+    requirements: { _method: post }
+
+product_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ShopSklepBundle:Product:edit" }
+
+product_update:
+    path:     /{id}/update
+    defaults: { _controller: "ShopSklepBundle:Product:update" }
+    requirements: { _method: post|put }
+
+product_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ShopSklepBundle:Product:delete" }
+    requirements: { _method: post|delete }

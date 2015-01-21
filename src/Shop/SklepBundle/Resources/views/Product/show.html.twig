@@ -1,7 +1,30 @@
 
-    <h1>Product</h1>
 
-    <table class="record_properties">
+
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+        <link href="{{ asset('css/register.css') }}" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+
+
+        <div class="container">
+
+      <div class="jumbotron">
+
+
+
+
+    <h1>{{ entity.name }} </h1>
+
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -19,9 +42,11 @@
                 <th>Description</th>
                 <td>{{ entity.description }} </td>
             </tr>
-            <tr>
-                <th>Imagename</th>
-                <td>{{ entity.imageName }} </td>
+  
+                        <tr>
+                <th>{{ entity.imageName }} </th>
+                <td><img data-holder-rendered="true" src="{{ vich_uploader_asset(entity, 'imageFile') }}" style="width: 200px; height: 200px;" data-src="holder.js/200x200" class="img-thumbnail" alt="200x200"></td> 
+                </td>
             </tr>
             <tr>
                 <th>Updatedat</th>
@@ -30,16 +55,19 @@
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('product') }}">
-            Back to the list
+  
+
+  
+        <p>  <a href="{{ path('product_edit', { 'id': entity.id }) }}">
+            <button type="button" class="btn btn-xs btn-primary">Edit</button>
         </a>
-    </li>
-    <li>
-        <a href="{{ path('product_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+  
+    {{ form(delete_form) }}
+
+
+      <a class="btn btn-lg btn-success" href="{{ path('product') }}" role="button">Back to list</a></p>
+      </div>
+
+
+
+

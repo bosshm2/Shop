@@ -1,5 +1,79 @@
 
-<h1>?</h1>
-{% block body %}
-    Homepage.
-{% endblock %}
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/shop-homepage.css') }}" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}Strona główna{% endblock %}</title>
+
+
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/shop-homepage.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ path('shop_sklep_homepage') }}">Mój sklep</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+          <form class="navbar-form navbar-right">
+
+                      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+
+
+            <a href="{{ path('fos_user_security_login') }}" button type="submit" class="btn btn-success">Zaloguj</button></a>
+            <a href="{{ path('fos_user_registration_register') }}" button type="submit" class="btn btn-danger">Zarejestruj</button>
+            </a>
+
+
+            {% endif %}
+
+
+        
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        {% block jumbo %}
+        {% endblock %}
+      </div>
+    </div>

@@ -1,16 +1,33 @@
 
 
+
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+        <link href="{{ asset('css/register.css') }}" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+
+
+        <div class="container">
+
+      <div class="jumbotron">
+
 {% block body -%}
-    <h1>Product edit</h1>
+    <h1>Edit</h1>
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('product') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+ {{ form(delete_form) }}
+
+
+     <a class="btn btn-lg btn-success" href="{{ path('product') }}" role="button">Back to list</a></p>
+
+
 {% endblock %}

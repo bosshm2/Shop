@@ -11,15 +11,20 @@
 {% for article in pagination %}
  <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="">
+                            <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="" class="img-thumbnail">
                             <div class="caption">
                                 <h4 class="pull-right">{{ article.price }} PLN</h4>
                                 <h4><a href="{{path('shop_sklep_item', {'id': article.id}) }}">{{ article.name }}</a>
                                 </h4>
                                 <p>{{ article.description }}</p>
                             </div>
-                            <div class="ratings">
-                                <p class="pull-right">{{ article.id }}</p>
+                            <div class="buy">                      
+                            <p class="pull-right">                                
+                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}           
+                            <a href="{{path('shop_sklep_item', {'id': article.id}) }}"><button type="submit" class="btn btn-success">  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Kup</button></a></p>
+       
+                            {% else %}
+                            {% endif %}    
                                 <p>
                                     <a href="{{path('shop_sklep_item', {'id': article.id}) }}"><button type="submit" class="btn btn-primary">Zobacz</button></a>
                                 </p>

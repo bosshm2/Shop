@@ -1,3 +1,7 @@
+shop_sklep_product:
+    resource: "@ShopSklepBundle/Resources/config/routing/product.yml"
+    prefix:   /product
+
 shop_sklep_homepage:
     path:     /
     defaults: { _controller: ShopSklepBundle:Default:index }
@@ -7,6 +11,8 @@ shop_sklep_ask:
     defaults: { _controller: ShopSklepBundle:Page:ask }
     requirements:
     methods:  GET|POST
+
+
 
 shop_sklep_items:
     path:     /items

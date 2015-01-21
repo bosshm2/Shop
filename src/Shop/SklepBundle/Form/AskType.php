@@ -12,7 +12,7 @@ class AskType extends AbstractType
     {
         $builder->add('name');
         $builder->add('email', 'email');
-        $builder->add('content');
+        $builder->add('content' 'text');
     }
 
     public function getName()
