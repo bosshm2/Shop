@@ -7,7 +7,7 @@
 
     <link href="{{ asset('css/register.css') }}" rel="stylesheet">
 
-        <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="{{ asset('js/jquery.js') }}"></script>
@@ -15,18 +15,13 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-
-
-
-        <div class="container">
-
-
+     <div class="container">
 
      <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
         <h2 class="form-signin-heading">Please sign in</h2>
     <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}<" class="form-control" />
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}" class="form-control" />
 
     <label for="password">{{ 'security.login.password'|trans }}</label>
     <input type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}" class="form-control" />
