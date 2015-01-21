@@ -11,6 +11,4 @@ fos_user:
 
 product:
     resource: @ShopSklepBundle/Controller/
-    type:     annotation
-
 
